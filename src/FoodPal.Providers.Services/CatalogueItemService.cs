@@ -19,7 +19,7 @@ namespace FoodPal.Providers.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
         }
-        public async Task<int> Create(NewCatalogueItemDto catalogueItem)
+        public async Task<int> CreateAsync(NewCatalogueItemDto catalogueItem)
         {
             var itemModel = _mapper.Map<NewCatalogueItemDto, DomainModels.CatalogueItem>(catalogueItem);
 
@@ -33,7 +33,7 @@ namespace FoodPal.Providers.Services
         }
 
 
-        public async Task Delete(int catalogueItemId)
+        public async Task DeleteAsync(int catalogueItemId)
         {
             var itemModel = await _unitOfWork.CatalogueItemsRepository.GetWithProviderByIdAsync(catalogueItemId);
 
@@ -41,7 +41,7 @@ namespace FoodPal.Providers.Services
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<CatalogueItemDto>> GetCatalogueItemsForProvider(int providerId)
+        public async Task<IEnumerable<CatalogueItemDto>> GetCatalogueItemsForProviderAsync(int providerId)
         {
             var models = await _unitOfWork.CatalogueItemsRepository
                 .GetAllWithProviderAsync(providerId);
@@ -49,7 +49,7 @@ namespace FoodPal.Providers.Services
             return _mapper.Map<IEnumerable<DomainModels.CatalogueItem>, IEnumerable<CatalogueItemDto>>(models);
         }
 
-        public async Task<CatalogueItemDto> GetCatalogueItemById(int catalogueItemId)
+        public async Task<CatalogueItemDto> GetCatalogueItemByIdAsync(int catalogueItemId)
         {
             var model = await _unitOfWork.CatalogueItemsRepository
                 .GetWithProviderByIdAsync(catalogueItemId);
@@ -57,7 +57,7 @@ namespace FoodPal.Providers.Services
             return _mapper.Map<DomainModels.CatalogueItem, CatalogueItemDto>(model);
         }
 
-        public async Task<bool> CatalogueItemExists(string catalogueItemName, int providerId)
+        public async Task<bool> CatalogueItemExistsAsync(string catalogueItemName, int providerId)
         {
 
             var itemFound = await _unitOfWork.CatalogueItemsRepository
@@ -68,7 +68,7 @@ namespace FoodPal.Providers.Services
         }
 
 
-        public async Task Update(CatalogueItemDto catalogueItem)
+        public async Task UpdateAsync(CatalogueItemDto catalogueItem)
         {
             await _unitOfWork.CommitAsync();
         }

@@ -6,16 +6,16 @@ namespace FoodPal.Providers.Services.Contracts
 {
     public interface ICatalogueItemService
     {
-        Task<IEnumerable<CatalogueItemDto>> GetCatalogueItemsForProvider(int providerId);
+        Task<IEnumerable<CatalogueItemDto>> GetCatalogueItemsForProviderAsync(int providerId);
 
-        Task<CatalogueItemDto> GetCatalogueItemById(int catalogueItemId);
+        Task<CatalogueItemDto> GetCatalogueItemByIdAsync(int catalogueItemId);
 
-        Task<bool> CatalogueItemExists(string catalogueItemName, int providerId);
+        Task<bool> CatalogueItemExistsAsync(string catalogueItemName, int providerId);
 
-        Task<int> Create(NewCatalogueItemDto catalogueItem);
+        Task<int> CreateAsync(NewCatalogueItemDto catalogueItem);
 
-        Task Update(CatalogueItemDto catalogueItem);
+        Task UpdateAsync(CatalogueItemDto catalogueItem);
 
-        Task Delete(int catalogueItemId);
+        Task DeleteAsync(int catalogueItemId);
     }
 }
