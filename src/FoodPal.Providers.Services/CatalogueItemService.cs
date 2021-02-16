@@ -70,6 +70,11 @@ namespace FoodPal.Providers.Services
 
         public async Task UpdateAsync(CatalogueItemDto catalogueItem)
         {
+            var entity = await _unitOfWork.CatalogueItemsRepository.SingleOrDefaultAsync(x => x.Id == catalogueItem.Id);
+
+            entity.Name = catalogueItem.Name;
+            entity.Price = catalogueItem.Price;
+
             await _unitOfWork.CommitAsync();
         }
     }

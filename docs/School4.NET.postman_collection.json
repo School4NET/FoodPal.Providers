@@ -127,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"Name\": \"Chicken soup\",\r\n    \"CategoryId\": 3,\r\n    \"CatalogueId\" {catalogueId},\r\n    \"Price\": 25.25\r\n}",
+					"raw": "{\r\n    \"Id\": {itemId},\r\n    \"Name\": \"Chicken soup\",\r\n    \"CategoryId\": 3,\r\n    \"CatalogueId\" {catalogueId},\r\n    \"Price\": 25.25\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
